@@ -12,6 +12,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //Routes
+app.get("/", (req, res) => {
+  Post.findAll().then((posts) => {
+    res.render("home", { posts: posts });
+  });
+});
+
 app.get("/cad", (req, res) => {
   res.render("formulario");
 });
